@@ -16,13 +16,12 @@ export function list(): Promise<TodoItem[]> {
 
 export function create(item: TodoItem): Promise<{}> {
   return new Promise<{}>((resolve, reject) => {
-    $.post(
-      `${todoUrl}/todo/create`,
-      item,
-      () => {
-        resolve();
-      },
-      'json'
-    );
+    $.ajax({
+      method: 'POST',
+      url: `${todoUrl}/todo/create`,
+      contentType: 'application/json',
+      data: JSON.stringify(item),
+      success: () => resolve(),
+    });
   });
 }

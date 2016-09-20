@@ -28,8 +28,9 @@ export class TodoHeader extends React.Component<TodoHeaderProps, TodoHeaderState
   }
 
   handleKeyPress(event) {
-    if (event.key === 'Enter') {
-      this.props.onCreateTodo({ title: event.target.value, complete: false });
+    const val = event.target.value.trim();
+    if (event.key === 'Enter' && val !== '') {
+      this.props.onCreateTodo({ title: val, complete: false });
       this.setState({ value: '' });
     }
   }
