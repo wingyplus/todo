@@ -3,7 +3,7 @@ import * as React from 'react';
 import { TodoItem } from './TodoItem';
 
 interface TodoHeaderProps {
-  onCreateTodo: (TodoItem) => void;
+  onCreateTodo: ({ title: string }) => void;
 }
 
 interface TodoHeaderState {
@@ -30,7 +30,7 @@ export class TodoHeader extends React.Component<TodoHeaderProps, TodoHeaderState
   handleKeyPress(event) {
     const val = event.target.value.trim();
     if (event.key === 'Enter' && val !== '') {
-      this.props.onCreateTodo({ title: val, complete: false });
+      this.props.onCreateTodo({ title: val });
       this.setState({ value: '' });
     }
   }

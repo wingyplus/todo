@@ -14,14 +14,14 @@ export function list(): Promise<TodoItem[]> {
   });
 }
 
-export function create(item: TodoItem): Promise<{}> {
+export function create(item: { title: string }): Promise<{}> {
   return new Promise<{}>((resolve, reject) => {
     $.ajax({
       method: 'POST',
       url: `${todoUrl}/todo/create`,
       contentType: 'application/json',
       data: JSON.stringify(item),
-      success: () => resolve(),
+      success: () => resolve({ title: item.title, completed: false }),
     });
   });
 }

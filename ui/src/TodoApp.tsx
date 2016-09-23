@@ -22,12 +22,12 @@ class TodoApp extends React.Component<{}, { items: TodoItem[] }>{
       .then((items) => this.setState({ items: items }));
   }
 
-  createTodo(item: TodoItem) {
+  createTodo(item: { title: string }) {
     todoService.create(item)
-      .then(() => {
+      .then((_item: TodoItem) => {
         this.setState({
-          items: this.state.items.concat(item)
-        })
+          items: this.state.items.concat(_item)
+        });
       });
   }
 

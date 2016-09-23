@@ -13,7 +13,7 @@ export class TodoMain extends React.Component<{ items: item.TodoItem[] }, {}> {
 }
 
 function TodoList(props: { items: item.TodoItem[] }) {
-  let items = props.items.map((item, index) => <TodoItem key={index} title={item.title} complete={item.complete} />);
+  let items = props.items.map((item, index) => <TodoItem key={index} title={item.title} completed={item.completed} />);
 
   return (
     <ul className="todo-list">
@@ -26,7 +26,7 @@ function TodoItem(props: item.TodoItem) {
   return (
     <li>
       <div className="view">
-        <input className="toggle" type="checkbox" defaultChecked={props.complete} />
+        <input className="toggle" type="checkbox" defaultChecked={props.completed} />
         <label>{props.title}</label>
       </div>
     </li>
