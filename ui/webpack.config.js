@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   entry: './src/TodoApp',
   output: {
@@ -5,10 +7,10 @@ module.exports = {
     path: `${__dirname}/dist`,
   },
   resolve: {
-    extensions: ['', '.webpack.config.js', '.web.js', '.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
-    loaders: [
+    rules: [
       { test: /.tsx?$/, loader: 'ts-loader' },
     ],
   },
@@ -17,4 +19,5 @@ module.exports = {
     'react-dom': 'ReactDOM',
     'jquery': 'jQuery',
   },
+  watch: true,
 };
